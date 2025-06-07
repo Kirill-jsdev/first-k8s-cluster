@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp # or better just call the same as pod - webapp
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp # has to be the same as labels on line 16
+  template: # the template for POD, would be beter if it would be called POD instead
+    # in here we put the exact same settings as for individual pod
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      containers:
+        - name: webapp
+          image: richardchesterwood/k8s-fleetman-webapp-angular:release0-5
