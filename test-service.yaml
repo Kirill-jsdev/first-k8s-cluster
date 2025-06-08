@@ -9,7 +9,6 @@ spec:
   # the service becomes a network endpoint for either other services or maybe esternal users to connect to (eg. browser)
   selector:
     app: webapp # 'webapp' is the name of our pod
-    release: "0-5"
   ports:
     - name: http
       port: 80
