@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-gateway # This is the name of the container does not matter
-          image: richardchesterwood/k8s-fleetman-api-gateway:release1
+          image: richardchesterwood/k8s-fleetman-api-gateway:release2
 
           env:
             - name: SPRING_PROFILES_ACTIVE

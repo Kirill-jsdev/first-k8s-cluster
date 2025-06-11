@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: position-tracker # This is the name of the container does not matter
-          image: richardchesterwood/k8s-fleetman-position-tracker:release1
+          image: richardchesterwood/k8s-fleetman-position-tracker:release3
 
           env:
             - name: SPRING_PROFILES_ACTIVE
