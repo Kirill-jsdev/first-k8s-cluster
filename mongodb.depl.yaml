@@ -21,9 +21,8 @@ spec:
               mountPath: "/data/db" #folder inside the container that will be mapped to the persistent volume on the host, outside the container
       volumes:
         - name: mongodb-persistent-storage
-          hostPath:
-            path: /host_mnt/c/test-mobgo-k8s-volume/db #path on the host machine where the data will be stored, outside the container
-            type: DirectoryOrCreate #if the path does not exist, it will be created
+          persistentVolumeClaim:
+            claimName: mongodb-pvc
 
 ---
 apiVersion: v1
