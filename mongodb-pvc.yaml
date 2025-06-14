@@ -4,11 +4,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: mongodb-pvc
 spec:
+  storageClassName: mylocalstorage # This is the name of the storage class we want to use
   accessModes:
-    - ReadWriteOnce # This means the volume can be mounted as read-write by a single node
+    - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi # (We need only 1 from the 2GB available)
+      storage: 1Gi
 
 ---
 # How do we want it to be implemented
@@ -17,13 +18,11 @@ kind: PersistentVolume
 metadata:
   name: mongodb-local-storage
 spec:
+  storageClassName: mylocalstorage # This is the name of the storage class we want to use
   accessModes:
     - ReadWriteOnce
   capacity:
-    storage: 2Gi # This is the size of the persistent volume (All we have is 10GB)
+    storage: 2Gi
   hostPath:
-    path: "/mnt/some/directory/structure" # This is the path on the host machine where the data will be stored
-    type: DirectoryOrCreate # This will create the directory if it does not exist
-
-# As we can see, PersistentVolumeClaim does not reference any PersistentVolume.
-# Next commit will show how to link them together.
+    path: "/mnt/some/directory/structure"
+    type: DirectoryOrCreate
